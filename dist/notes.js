@@ -358,4 +358,145 @@ console.log(numberInstance.getValue()); // 123
 console.log(stringInstance.getValue()); // hello
 
 Here, GenericClass is a generic class with a type parameter T. Instances of GenericClass can hold values of different types, specified when the instance is created.
+*/
+// Decorators in TypeScript
+// Decorators are a feature of TypeScript that allows you to add metadata or behavior to classes, methods, properties, or parameters. Decorators are applied using the @decorator syntax, followed by the decorator function or class.
+/*
+Decorators in TypeScript are a special kind of declaration that can be attached to classes, methods, properties, or parameters to modify their behavior. They are a powerful feature that enables you to add metadata, change how classes and their members are used, or enhance functionality without modifying the actual code.
+Key Points About Decorators
+
+    Metadata and Configuration: Decorators are often used to provide metadata or configuration to classes and their members, which can be utilized by frameworks and libraries to perform various tasks, like dependency injection or validation.
+
+    Syntax: Decorators are prefixed with the @ symbol and are applied directly before the declaration of a class, method, or property.
+
+    Types of Decorators:
+        Class Decorators: Applied to the class itself.
+        Method Decorators: Applied to methods within the class.
+        Property Decorators: Applied to properties within the class.
+        Parameter Decorators: Applied to parameters of methods within the class.
+
+Basic Usage
+
+Here’s a basic example of a class decorator in TypeScript:
+
+typescript
+
+// Class Decorator
+function LogClass(target: Function) {
+  console.log(`Class ${target.name} has been created`);
+}
+
+@LogClass
+class Person {
+  constructor(public name: string, public age: number) {}
+}
+
+const person = new Person('Alice', 30);
+// Logs: Class Person has been created
+
+In this example:
+
+    @LogClass is a class decorator that logs a message when the class is created.
+
+Method Decorator
+
+Here’s an example of a method decorator:
+
+typescript
+
+function LogMethod(target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+  const originalMethod = descriptor.value;
+  
+  descriptor.value = function (...args: any[]) {
+    console.log(`Method ${propertyKey} was called with args: ${args}`);
+    return originalMethod.apply(this, args);
+  };
+}
+
+class Person {
+  constructor(public name: string, public age: number) {}
+
+  @LogMethod
+  greet(greeting: string) {
+    console.log(`${greeting}, my name is ${this.name}`);
+  }
+}
+
+const person = new Person('Alice', 30);
+person.greet('Hello');
+// Logs: Method greet was called with args: [ 'Hello' ]
+// Logs: Hello, my name is Alice
+
+In this example:
+
+    @LogMethod is a method decorator that logs when a method is called and the arguments it was called with.
+
+Property Decorator
+
+Here's an example of a property decorator:
+
+typescript
+
+function ReadOnly(target: any, propertyKey: string) {
+  Object.defineProperty(target, propertyKey, {
+    writable: false
+  });
+}
+
+class Person {
+  @ReadOnly
+  name: string;
+
+  constructor(name: string) {
+    this.name = name;
+  }
+}
+
+const person = new Person('Alice');
+person.name = 'Bob'; // Error: Cannot assign to read-only property 'name'
+
+In this example:
+
+    @ReadOnly is a property decorator that makes the name property read-only.
+
+Parameter Decorator
+
+Here’s an example of a parameter decorator:
+
+typescript
+
+function LogParameter(target: any, propertyKey: string, parameterIndex: number) {
+  console.log(`Parameter at index ${parameterIndex} in method ${propertyKey} is being decorated`);
+}
+
+class Person {
+  constructor(public name: string, public age: number) {}
+
+  greet(@LogParameter greeting: string) {
+    console.log(`${greeting}, my name is ${this.name}`);
+  }
+}
+
+const person = new Person('Alice', 30);
+person.greet('Hello');
+// Logs: Parameter at index 0 in method greet is being decorated
+
+In this example:
+
+    @LogParameter is a parameter decorator that logs information about the parameter being decorated.
+
+Using Decorators
+
+To use decorators in TypeScript, you need to enable the experimentalDecorators option in your tsconfig.json:
+
+json
+
+{
+  "compilerOptions": {
+    "experimentalDecorators": true
+  }
+}
+
+Decorators are a powerful feature, especially in frameworks like Angular, where they are used extensively for things like dependency injection and component configuration.
+
 */ 
