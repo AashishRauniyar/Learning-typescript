@@ -1,32 +1,33 @@
-// Basic types
+// Type Assertions
 
-// primitives and reference types
+function abcdef(){
 
-// Number, String, Boolean
-// Array, Tuples
-// Any, Unknown, Never, Void
-// Enum
-
-
-// Type Inference
-// | and &
-
-// Interface
-
-interface User{
-    name: string,
-    username: string,
-    age: number,
-    email: string,
-    pasword: string,
-
+    // type assertions
+    (document.querySelector("p") as HTMLParagraphElement)
 }
 
-type Sankhya = number;
-type Sankhya = number;
+// Literal Types
 
-// type ma = auxa but interface ma audaina
+// String literal types
+// value change grna mildaina cause its literally defined
+let abok: "harsh";
 
-function getUser(user: User){
-    
-}
+// Number literal types
+
+// another example
+let stringornumber: "aashish" | "14";
+
+stringornumber = "aashish";
+stringornumber = "14";
+//stringornumber = "15"; // error cannot be changed
+
+
+
+// Boolean literal types
+let isOK: true;
+
+isOK = true;
+//isOK = false; // error cannot be changed 
+
+
+//example

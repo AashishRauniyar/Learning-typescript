@@ -299,3 +299,7 @@ function names(...names) {
     console.log(names);
 }
 names('Ram', 'Shyam', 'Hari');
+// Exporting and importing
+// export const PI = 3.14;
+// import { PI } from "./utils";
+// console.log(PI); // 3.14
