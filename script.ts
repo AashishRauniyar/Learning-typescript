@@ -9,4 +9,24 @@
 
 
 // Type Inference
+// | and &
 
+// Interface
+
+interface User{
+    name: string,
+    username: string,
+    age: number,
+    email: string,
+    pasword: string,
+
+}
+
+type Sankhya = number;
+type Sankhya = number;
+
+// type ma = auxa but interface ma audaina
+
+function getUser(user: User){
+    
+}

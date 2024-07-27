@@ -1,4 +1,24 @@
-let a: number; 
+//primitive types:
+// number boolean undefined string characters
+
+//reference types:
+// arrays objects functions
+
+let a = 12;
+
+let b = a;
+
+let arrok = [1, 2, 3, 4, 5];
+let arr2 = arrok;
+
+arr2.pop();
+
+// now the last value will be removed from both the arrays due to referencing in js ns ts
+
+
+
+
+let ab: number; 
 
 let arr: [];
 
@@ -108,3 +128,67 @@ let value: School = {
     section: 'A',
 }
 
+
+
+//Type Aliases
+
+
+// primtive type aliases
+// object type aliases
+
+type name = string;
+let l: name = 'Ram';
+
+type user ={
+    name: string,
+    age: number,
+    address: string,
+}
+
+let user1: user = {
+    name: 'Ram',
+    age: 23,
+    address: 'Kathmandu',
+} 
+
+interface Human{
+    name: string;
+}
+
+interface Human{
+    age: number;
+}
+
+
+function abcdee(human: Human){
+    console.log(human);
+    human.name;
+    human.age;
+}
+
+
+interface Food{
+    name: string,
+    price: number,
+
+}
+
+// when we extend we can get the properties of interface which we extended
+interface MithaFood extends Food{
+    sweet: boolean,
+}
+
+interface SpicyFood extends Food{
+    spicy: boolean,
+}
+
+
+function getMithai(food: MithaFood){
+    console.log(food);
+    food.sweet   
+}
+
+function getSpicyFood(food: SpicyFood){
+    console.log(food);
+    food.spicy;
+}

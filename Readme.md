@@ -1,18 +1,12 @@
-//primitive types:
-// number boolean undefined string characters
+Learning TS 
 
-//reference types:
-// arrays objects functions
+>primitive types and reference types
+> Type 
+>interference
+> | and &
+>interface
 
-let a = 12;
+Normal Concepts and
 
-let b = a;
-
-let arr = [1, 2, 3, 4, 5];
-let arr2 = arr;
-
-arr2.pop();
-
-// now the last value will be removed from both the arrays due to referencing in js ns ts
-
+OOP
 
