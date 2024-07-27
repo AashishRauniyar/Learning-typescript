@@ -303,3 +303,59 @@ names('Ram', 'Shyam', 'Hari');
 // export const PI = 3.14;
 // import { PI } from "./utils";
 // console.log(PI); // 3.14
+// Generic in ts
+// How should you install TypeScript in your project via npm?
+// Run npm install typescript --save-dev in your terminal in your project's root folder.
+// Run npm install typescript -g typescript anywhere in your terminal.
+// Incorrect
+// Run npm install typescript -dev in your terminal in your Visual Studio folder.
+/*
+
+In TypeScript, a generic type is a way to create reusable and flexible components or functions that can work with a variety of types, rather than a single one. Generics allow you to define a placeholder type that can be specified later, when the function or component is used. This increases the flexibility and reusability of the code.
+
+Here’s an example to illustrate the concept:
+
+typescript
+
+// A simple function to return the first element of an array
+function firstElement<T>(arr: T[]): T {
+  return arr[0];
+}
+
+// Using the generic function with different types
+let numberArray = [1, 2, 3];
+let stringArray = ['a', 'b', 'c'];
+
+let firstNumber = firstElement(numberArray); // firstNumber is of type number
+let firstString = firstElement(stringArray); // firstString is of type string
+
+In this example:
+
+    T is a type parameter that acts as a placeholder for the actual type.
+    firstElement is a generic function that takes an array of type T and returns an element of type T.
+    When firstElement is called with an array of numbers, T is inferred to be number.
+    When firstElement is called with an array of strings, T is inferred to be string.
+
+Generics are not limited to functions; they can also be used with classes, interfaces, and other structures. For example:
+
+typescript
+
+class GenericClass<T> {
+  value: T;
+  constructor(value: T) {
+    this.value = value;
+  }
+
+  getValue(): T {
+    return this.value;
+  }
+}
+
+let numberInstance = new GenericClass<number>(123);
+let stringInstance = new GenericClass<string>('hello');
+
+console.log(numberInstance.getValue()); // 123
+console.log(stringInstance.getValue()); // hello
+
+Here, GenericClass is a generic class with a type parameter T. Instances of GenericClass can hold values of different types, specified when the instance is created.
+*/ 
